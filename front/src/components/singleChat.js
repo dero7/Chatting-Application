@@ -22,10 +22,10 @@ import Lottie from "react-lottie";
 import animationData from "../animation/typing.json";
 
 //use this when this is deployed
-// const ENDPOINT = "https://chit-chat-rqsd.onrender.com";
+const ENDPOINT = "https://chit-chat-rqsd.onrender.com";
 
 //use this when working in local host
-const ENDPOINT = "http://localhost:5000";
+// const ENDPOINT = "http://localhost:5000";
 
 var socket, selectedChatCompare;
 
@@ -238,7 +238,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                   <Lottie
                     options={defaultOptions}
                     width={70}
-                    style={{ marginLeft: 0 }}
+                    // this style method is giving error
+                    // style={{ marginLeft: 0 }}
                   />
                 </div>
               ) : (

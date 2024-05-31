@@ -1,5 +1,5 @@
-const { chats } = require("./data/data");
-const colors = require("colors");
+// const { chats } = require("./data/data");
+// const colors = require("colors");
 const express = require("express");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv");
@@ -50,9 +50,10 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://time-pass-mk4p.onrender.com",
+    origin: "http://localhost:3000",
   },
 });
+
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
 
