@@ -22,7 +22,7 @@ import Lottie from "react-lottie";
 import animationData from "../animation/typing.json";
 
 //use this when this is deployed
-const ENDPOINT = "https://chit-chat-rqsd.onrender.com";
+const ENDPOINT = "https://time-pass-mk4p.onrender.com";
 
 //use this when working in local host
 // const ENDPOINT = "http://localhost:5000";

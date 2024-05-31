@@ -1,5 +1,3 @@
-// const { chats } = require("./data/data");
-// const colors = require("colors");
 const express = require("express");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv");
@@ -14,10 +12,6 @@ connectDB();
 
 const app = express();
 app.use(express.json()); // to accept json data
-
-// app.get("/", (req, res) => {
-//   res.send("API is running");
-// });
 
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
@@ -50,8 +44,7 @@ const server = app.listen(
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://time-pass-mk4p.onrender.com",
-    // origin: "http://localhost:3000",
+    origin: "http://localhost:3000",
   },
 });
 
