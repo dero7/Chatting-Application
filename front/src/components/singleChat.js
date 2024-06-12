@@ -15,13 +15,13 @@ import { getSender, getSenderFull } from "../config/ChatLogics";
 import ProfileModal from "./miscellaneous/ProfileModal";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import axios from "axios";
-import "./style.css";
 import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import Lottie from "react-lottie";
+import "./style.css";
 import animationData from "../animation/typing.json";
 
-//use this when this is deployed
+//use this when deployed mode
 const ENDPOINT = "https://time-pass-mk4p.onrender.com";
 
 //use this when working in local host
@@ -221,53 +221,46 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
             borderRadius="lg"
             overflowY="hidden"
           >
-            <Box>
-              {loading ? (
-                <Box display="flex" justifyContent="center" alignItems="center">
-                  <Spinner size="lg" w={20} h={20} />
-                </Box>
-              ) : (
-                <Box className="messages">
-                  <ScrollableChat messages={messages} />
-                </Box>
-              )}
-            </Box>
-            <Box mt={2}>
-              {isTyping ? (
-                <div>
-                  <Lottie
-                    options={defaultOptions}
-                    width={70}
-                    // this style method is giving error
-                    // style={{ marginLeft: 0 }}
-                  />
-                </div>
-              ) : (
-                <></>
-              )}
-            </Box>
-            <Box>
-              <form onSubmit={sendMessage}>
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                >
-                  <Input
-                    variant="filled"
-                    type="text"
-                    bg="#E0E0E0"
-                    placeholder="Enter a message..."
-                    value={newMessage}
-                    onChange={typingHandler}
-                    mt={3}
-                  />
-                  <Button className="btn" type="submit" mt={3}>
-                    <BsSend />
-                  </Button>
-                </Box>
-              </form>
-            </Box>
+            {loading ? (
+              <Spinner
+                size="xl"
+                w={20}
+                h={20}
+                alignSelf="center"
+                margin="auto"
+              />
+            ) : (
+              <div className="messages">
+                <ScrollableChat messages={messages} />
+              </div>
+            )}
+            {isTyping ? (
+              <div>
+                <Lottie options={defaultOptions} width={80} height={30} />
+              </div>
+            ) : (
+              <></>
+            )}
+            <form onSubmit={sendMessage}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Input
+                  variant="filled"
+                  type="text"
+                  bg="#E0E0E0"
+                  placeholder="Enter a message..."
+                  value={newMessage}
+                  onChange={typingHandler}
+                  mt={3}
+                />
+                <Button className="btn" type="submit" mt={3}>
+                  <BsSend />
+                </Button>
+              </Box>
+            </form>
           </Box>
         </>
       ) : (
