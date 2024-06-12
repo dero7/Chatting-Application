@@ -3,7 +3,7 @@ import { Box, Stack, Text } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { getSender, getSenderFull } from "../config/ChatLogics";
+import { getSender, getName, getPic } from "../config/ChatLogics";
 import ChatLoading from "./ChatLoading";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
 import { Button } from "@chakra-ui/react";
@@ -104,14 +104,18 @@ const MyChats = ({ fetchAgain }) => {
                 display="flex"
                 alignItems="center"
               >
-                <Avatar
-                  mt="7px"
-                  mr={1}
-                  size="sm"
-                  cursor="pointer"
-                  name={getSenderFull(loggedUser, chat.users).name}
-                  src={getSenderFull(loggedUser, chat.users).pic}
-                />
+                {!chat.isGroupChat ? (
+                  <Avatar
+                    mt="7px"
+                    mr={1}
+                    size="sm"
+                    cursor="pointer"
+                    name={getName(loggedUser, chat.users)}
+                    src={getPic(loggedUser, chat.users)}
+                  />
+                ) : (
+                  <Avatar mt="7px" mr={1} size="sm" cursor="pointer" />
+                )}
                 <Box>
                   <Text>
                     {!chat.isGroupChat
